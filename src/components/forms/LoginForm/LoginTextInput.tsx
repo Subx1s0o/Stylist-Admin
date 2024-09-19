@@ -32,13 +32,13 @@ export default function LoginTextInput({
 
   return (
     <div className="flex flex-col gap-1">
-      {label && <label>{label}</label>}
+      {label && <label className="text-md">{label}</label>}
       <div className="relative">
         <input
           {...control.register(name)}
           {...inputProps}
           type={isHiding ? "password" : "text"}
-          className="w-[347px] h-[36px] rounded-xl py-2 px-3"
+          className="w-[347px] h-[36px] rounded-xl py-2 px-3 text-sm-thin"
         />
         {hiding && (
           <button

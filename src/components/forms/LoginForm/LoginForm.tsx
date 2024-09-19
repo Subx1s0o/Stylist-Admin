@@ -38,7 +38,7 @@ export default function LoginForm({}) {
           hiding
         />
       </div>
-      <Button variant="black" disabled={isSubmitting}>
+      <Button variant="black" disabled={isSubmitting} className="text-lg">
         Увійти
       </Button>
     </form>

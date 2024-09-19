@@ -1,15 +1,11 @@
 import type { Config } from "tailwindcss";
 
-const config: Config = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+export default {
+  content: ["./src/components/**/*.tsx", "./src/app/**/*.tsx"],
   theme: {
     extend: {
-      fontFamily: {
-        exo2: ["var(--font-exo_2)", "sans-serif"],
+      borderRadius: {
+        md: "20px",
       },
       spacing: {
         15: "60px",
@@ -25,8 +21,58 @@ const config: Config = {
         black: "#2B2423",
         white: "#FAF8F0",
       },
+      fontSize: {
+        xxl: [
+          "28px",
+          {
+            fontWeight: "500",
+            lineHeight: "25.2px",
+          },
+        ],
+        xl: [
+          "24px",
+          {
+            fontWeight: "500",
+            lineHeight: "28.8px",
+          },
+        ],
+        lg: [
+          "20px",
+          {
+            fontWeight: "500",
+            lineHeight: "24px",
+          },
+        ],
+        md: [
+          "18px",
+          {
+            fontWeight: "500",
+            lineHeight: "21.6px",
+          },
+        ],
+        sm: [
+          "16px",
+          {
+            fontWeight: "500",
+            lineHeight: "20px",
+          },
+        ],
+        "sm-thin": [
+          "16px",
+          {
+            fontWeight: "400",
+            lineHeight: "20px",
+          },
+        ],
+        xs: [
+          "14px",
+          {
+            fontWeight: "400",
+            lineHeight: "20px",
+          },
+        ],
+      },
     },
   },
   plugins: [],
-};
-export default config;
+} as Config;

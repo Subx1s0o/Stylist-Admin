@@ -1,5 +1,5 @@
-import LoginPage from "@/components/common/LoginPage";
+import { NextRequest, NextResponse } from "next/server";
 
-export default function Home() {
-  return <LoginPage />;
+export default function Home(req: NextRequest) {
+  return NextResponse.redirect(`${req.nextUrl.origin}/dashboard`);
 }
