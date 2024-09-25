@@ -1,7 +1,11 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  content: ["./src/components/**/*.tsx", "./src/app/**/*.tsx"],
+  content: [
+    "./src/components/**/*.tsx",
+    "./src/app/**/*.tsx",
+    "./src/views/**/*.tsx",
+  ],
   theme: {
     extend: {
       borderRadius: {

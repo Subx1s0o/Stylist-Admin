@@ -1,4 +1,4 @@
-import ServicePage from "@/components/common/ServicePage";
+import ServicePage from "@/views/ServicePage";
 
 export default function StylePage() {
   return (

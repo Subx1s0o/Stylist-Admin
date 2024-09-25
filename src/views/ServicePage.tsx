@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
-import FormatSwitcher from "../features/FormatSwitcher";
-import Icon from "../features/Icon";
-import useChangeFormat from "../hooks/useChangeFormat";
-import { useFetchData } from "../hooks/useFetchData";
-import DescriptionBar from "./Services/DescriptionBar";
-import ServiceList from "./Services/ServiceList";
-import ServicesSkeleton from "./Services/ServicesSkeleton";
+import DescriptionBar from "../components/common/Services/DescriptionBar";
+import ServiceList from "../components/common/Services/ServiceList";
+import ServicesSkeleton from "../components/common/Services/ServicesSkeleton";
+import FormatSwitcher from "../components/features/FormatSwitcher";
+import Icon from "../components/features/Icon";
+import useChangeFormat from "../components/hooks/useChangeFormat";
+import { useFetchData } from "../components/hooks/useFetchData";
 
 export default function ServicePage({
   defaultFormat,

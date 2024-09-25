@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 export default function Dashboard() {
-  return <div>Dashboard</div>;
+  return redirect("/dashboard/services/style");
 }

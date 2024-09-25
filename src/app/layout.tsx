@@ -1,5 +1,5 @@
-import SideBar from "@/components/common/SideBar/SideBar";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
+import SideBar from "@/views/SideBar";
 import type { Metadata } from "next";
 import { Exo_2 } from "next/font/google";
 import "./globals.css";

@@ -1,6 +1,6 @@
 import Icon from "@/components/features/Icon";
-import Navigation from "./Navigation/Navigation";
-import Settings from "./Settings/Settings";
+import Navigation from "../components/common/SideBar/Navigation/Navigation";
+import Settings from "../components/common/SideBar/Settings/Settings";
 
 export default function SideBar() {
   return (

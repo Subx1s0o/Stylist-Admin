@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef } from "react";
 import { cn } from "../utils/cn";
 
@@ -32,6 +33,7 @@ export default function FormatSwitcher({
         className="absolute bottom-0 left-0 h-full bg-white rounded-xl transition-transform duration-300 z-0"
       />
       <button
+        type="button"
         data-format="online"
         className={cn(
           "relative p-2 text-lg transition-colors z-10",
@@ -44,6 +46,7 @@ export default function FormatSwitcher({
         Online
       </button>
       <button
+        type="button"
         data-format="offline"
         className={cn(
           "relative p-2 text-lg transition-colors z-10",
