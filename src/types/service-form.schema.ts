@@ -20,7 +20,7 @@ export const ServiceFormSchema = z.object({
         ((files instanceof FileList && files.length > 0) ||
           (Array.isArray(files) && files.length > 0))
       );
-    }, "Фотографія є обов'язковою, доступні формати - avif, webp")
+    }, "Фотографія є обов'язковою, доступні формати - avif, jpg, webp, png, jpeg")
     .refine((files) => {
       const file =
         files instanceof FileList
@@ -28,8 +28,16 @@ export const ServiceFormSchema = z.object({
           : Array.isArray(files)
           ? files[0]
           : null;
-      return file ? ["image/avif", "image/webp"].includes(file.type) : false;
-    }, "Недоступимий формат зображення, доступні формати - avif, webp")
+      return file
+        ? [
+            "image/avif",
+            "image/webp",
+            "image/jpg",
+            "image/jpeg",
+            "image/png",
+          ].includes(file.type)
+        : false;
+    }, "Недоступимий формат зображення, доступні формати - avif, jpg, webp, png, jpeg")
     .refine((files) => {
       const file =
         files instanceof FileList

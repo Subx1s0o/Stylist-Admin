@@ -30,7 +30,7 @@ export default function FileInput({
         <input
           id={name}
           type="file"
-          accept=".avif, .webp"
+          accept=".avif, .webp, .png, .jpg, .jpeg"
           onChange={(e) => {
             if (e.target.files) {
               onChange(e.target.files);

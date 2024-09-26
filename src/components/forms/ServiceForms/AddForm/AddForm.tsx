@@ -6,6 +6,7 @@ import FormInput from "@/components/forms/ServiceForms/FormInput";
 import FormTextArea from "@/components/forms/ServiceForms/FormTextArea";
 import useChangeFormat from "@/components/hooks/useChangeFormat";
 import Button from "@/components/ui/Button";
+import { instance } from "@/instance";
 import {
   ServiceFormSchema,
   ServiceFormValues,
@@ -35,7 +36,6 @@ export default function AddForm({
   const onSubmit: SubmitHandler<ServiceFormValues> = async (data) => {
     const formData = new FormData();
 
-    console.log(data.file);
     if (data.file && data.file.length > 0) {
       formData.append("file", data.file[0]);
     } else {
@@ -68,14 +68,13 @@ export default function AddForm({
     formData.append("stages", JSON.stringify(stages));
 
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/services`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-      return res.json();
+      const res = await instance.post("/services", formData, {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
+
+      return res.data;
     } catch (error) {
       console.log(error);
     }
@@ -149,7 +148,7 @@ export default function AddForm({
             name="file"
             label="Фото"
             className="mb-8"
-            attention="Доступні формати avif , webp"
+            attention="Доступні формати avif, webp, png, jpg, jpeg"
           />
           <div className="flex flex-col gap-3">
             <FormTextArea
