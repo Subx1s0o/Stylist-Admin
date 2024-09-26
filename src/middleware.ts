@@ -1,15 +1,36 @@
+import axios from "axios";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import { BACKEND_URL } from "./components/utils/backend.url";
+
+interface isLogged {
+  isLogged: boolean;
+}
 
 export default async function middleware(req: NextRequest) {
-  const session = cookies().get("session")?.value;
+  const token = cookies().get("refreshToken")?.value;
+  let session: isLogged | null = null;
+
+  try {
+    const { data } = await axios.get<isLogged>(`${BACKEND_URL}/auth/logged`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    session = data;
+  } catch (error) {
+    if (req.nextUrl.pathname.startsWith("/dashboard")) {
+      return NextResponse.redirect(new URL("/login", req.nextUrl));
+    }
+  }
+
   const isLoginPage = req.nextUrl.pathname === "/login";
 
-  if (!session && !isLoginPage) {
+  if (!session?.isLogged && !isLoginPage) {
     return NextResponse.redirect(new URL("/login", req.nextUrl));
   }
 
-  if (session && isLoginPage) {
+  if (session?.isLogged && isLoginPage) {
     return NextResponse.redirect(new URL("/dashboard", req.nextUrl));
   }
 
@@ -21,5 +42,5 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|.*\\.avif|.*\\.svg$).*)"],
+  matcher: ["/dashboard/:path*", "/login", "/"],
 };

@@ -1,5 +1,4 @@
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
-import SideBar from "@/views/SideBar";
 import type { Metadata } from "next";
 import { Exo_2 } from "next/font/google";
 import "./globals.css";
@@ -24,10 +23,11 @@ export default function RootLayout({
       <body
         className={`${exo_2.className} antialiased font-exo2 bg-white p-5  h-screen`}
       >
-        <main className="grid grid-cols-[357px_1fr] gap-5 h-full">
-          <SideBar />
+        <main className="  h-full">
           <ReactQueryProvider>
-            <div className="bg-lightGrey rounded-md p-15">{children}</div>
+            <div className="bg-lightGrey rounded-md p-15 h-full">
+              {children}
+            </div>
           </ReactQueryProvider>
         </main>
       </body>
