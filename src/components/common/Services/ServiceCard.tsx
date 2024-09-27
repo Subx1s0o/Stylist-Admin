@@ -1,3 +1,4 @@
+"use client";
 import Icon from "@/components/features/Icon";
 import { Service } from "@/types/service.type";
 import Link from "next/link";
@@ -5,9 +6,14 @@ import Link from "next/link";
 interface ServiceCardProps {
   service: Service;
   index: number;
+  openModal: (id: string) => void;
 }
 
-export default function ServiceCard({ service, index }: ServiceCardProps) {
+export default function ServiceCard({
+  service,
+  index,
+  openModal,
+}: ServiceCardProps) {
   return (
     <li className="bg-white rounded-xl py-3 px-5 flex gap-10 justify-between items-center">
       <h3 className="text-black">
@@ -18,22 +24,25 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
       </p>
       <div className="flex gap-2">
         <Link
-          className="p-2 rounded-xl transition-colors hover:text-white hover:bg-black "
+          className="p-2 rounded-xl transition-colors hover:text-white hover:bg-black"
           href={`/dashboard/services/update/${service._id}`}
         >
           <Icon
             id="icon-update"
             width={24}
             height={24}
-            className="fill-current "
+            className="fill-current"
           />
         </Link>
-        <button className="p-2 rounded-xl transition-colors hover:text-white hover:bg-black ">
+        <button
+          onClick={() => openModal(service._id)}
+          className="p-2 rounded-xl transition-colors hover:text-white hover:bg-black"
+        >
           <Icon
             id="icon-delete"
             width={24}
             height={24}
-            className="fill-current "
+            className="fill-current"
           />
         </button>
       </div>
