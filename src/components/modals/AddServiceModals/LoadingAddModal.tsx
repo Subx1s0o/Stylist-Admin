@@ -3,7 +3,7 @@ import Modal from "../Modal";
 
 export default function LoadingAddModal() {
   return (
-    <Modal>
+    <Modal.Overlay>
       <Modal.Title className="m-10">
         <Icon
           className="animate-spin"
@@ -12,6 +12,6 @@ export default function LoadingAddModal() {
           height={50}
         />
       </Modal.Title>
-    </Modal>
+    </Modal.Overlay>
   );
 }

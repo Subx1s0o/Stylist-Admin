@@ -19,7 +19,6 @@ export default function ServicePage({
 
   const { data, error, isLoading } = useFetchData(category, activeFormat);
 
-  // if (isLoading) return <div>Loading...</div>;
   // if (error) return <div>Error: {error.message}</div>;
 
   return (

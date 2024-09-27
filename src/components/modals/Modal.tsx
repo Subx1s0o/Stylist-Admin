@@ -7,10 +7,16 @@ interface ModalProps {
 
 function Main({ children }: ModalProps): JSX.Element {
   return (
+    <div className=" py-5 px-10 z-40 bg-lightGrey border border-grey rounded-xl">
+      {children}
+    </div>
+  );
+}
+
+function Overlay({ children }: ModalProps): JSX.Element {
+  return (
     <div className="fixed w-full h-full inset-0  z-30 bg-primary-black flex justify-center items-center ">
-      <div className=" py-5 px-10 z-40 bg-lightGrey border border-grey rounded-xl">
-        {children}
-      </div>
+      {children}
     </div>
   );
 }
@@ -24,6 +30,7 @@ function Description({ className, children }: ModalProps): JSX.Element {
 }
 
 const Modal = Object.assign(Main, {
+  Overlay: Overlay,
   Title: Title,
   Description: Description,
 });
