@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="uk-UA">
       <body
-        className={`${exo_2.className} antialiased font-exo2 bg-white p-5 h-full`}
+        className={`${exo_2.className} antialiased font-exo2 bg-white p-5 h-screen`}
       >
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
