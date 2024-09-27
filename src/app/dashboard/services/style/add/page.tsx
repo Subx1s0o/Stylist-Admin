@@ -6,7 +6,7 @@ export default function page() {
       <div className=" mx-auto max-w-7xl">
         <h1 className="text-xxl text-center mb-10">Додати послугу</h1>
         <div>
-          <AddForm hasFormat category="style" />
+          <AddForm defaultFormat="online" hasFormat category="style" />
         </div>
       </div>
     </section>

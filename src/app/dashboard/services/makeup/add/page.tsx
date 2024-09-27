@@ -6,7 +6,7 @@ export default function page() {
       <div className=" mx-auto max-w-7xl">
         <h1 className="text-xxl text-center mb-10">Додати послугу</h1>
         <div>
-          <AddForm category="makeup" />
+          <AddForm defaultFormat="offline" category="makeup" />
         </div>
       </div>
     </section>
