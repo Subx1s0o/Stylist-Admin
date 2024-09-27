@@ -5,7 +5,7 @@ interface Translates {
 export type Service = {
   _id: string;
   title: Translates;
-  duration_work: Translates;
+  duration_work?: Translates;
   duration_consultation: Translates;
   price: string;
   attention?: Translates;

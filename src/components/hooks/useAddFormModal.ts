@@ -13,10 +13,10 @@ const useSubmitForm = (category: "style" | "makeup", activeFormat: string) => {
 
     formData.append("file", data.file[0]);
     formData.append("title", data.title);
-    formData.append("duration_work", data.duration_work);
+    formData.append("duration_work", data.duration_work || "");
     formData.append("duration_consultation", data.duration_consultation);
     formData.append("price", data.price);
-    formData.append("attention", data.attention);
+    formData.append("attention", data.attention || "");
     formData.append("result", data.result);
     formData.append("category", category);
     formData.append("format", activeFormat);
