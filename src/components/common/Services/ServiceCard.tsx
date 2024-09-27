@@ -15,11 +15,11 @@ export default function ServiceCard({
   openModal,
 }: ServiceCardProps) {
   return (
-    <li className="bg-white rounded-xl py-3 px-5 flex gap-10 justify-between items-center">
-      <h3 className="text-black">
+    <li className="bg-white relative rounded-xl py-3 px-5 flex gap-10 justify-between items-center">
+      <h3 className="text-black inline-block  max-w-[230px]">
         #{index + 1} {service.title.uk}
       </h3>
-      <p className="text-black max-w-[500px] line-clamp-2">
+      <p className="absolute left-[52%] -translate-x-1/2  text-black max-w-[500px] line-clamp-2">
         {service.result.uk}
       </p>
       <div className="flex gap-2">

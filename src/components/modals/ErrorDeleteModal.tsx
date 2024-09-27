@@ -1,13 +1,10 @@
+import { ModalProps } from "@/types/modal-props.type";
 import Button from "../ui/Button";
 import Modal from "./Modal";
 
-interface Props {
-  close: () => void;
-}
-
-export default function ErrorDeleteModal({ close }: Props) {
+export default function ErrorDeleteModal({ close, isOpen }: ModalProps) {
   return (
-    <Modal.Overlay>
+    <Modal.Overlay isOpen={isOpen}>
       <Modal>
         <Modal.Title className="mb-5">Помилка при видаленні!</Modal.Title>
         <Modal.Description className="mb-10">

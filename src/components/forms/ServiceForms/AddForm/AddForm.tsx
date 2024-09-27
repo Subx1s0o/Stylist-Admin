@@ -169,11 +169,13 @@ export default function AddForm({
         </div>
       </form>
 
-      {loading && <LoadingAddModal />}
+      {loading && <LoadingAddModal isOpen={loading} />}
 
-      {error && <ErrorAddModal close={() => setError(false)} />}
+      {error && <ErrorAddModal close={() => setError(false)} isOpen={error} />}
 
-      {success && <SuccessAddModal close={() => setSuccess(false)} />}
+      {success && (
+        <SuccessAddModal close={() => setSuccess(false)} isOpen={success} />
+      )}
     </>
   );
 }

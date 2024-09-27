@@ -1,9 +1,11 @@
 import Icon from "@/components/features/Icon";
 import Modal from "../Modal";
 
-export default function LoadingAddModal() {
+import { ModalProps } from "@/types/modal-props.type";
+
+export default function LoadingAddModal({ isOpen }: ModalProps) {
   return (
-    <Modal.Overlay>
+    <Modal.Overlay isOpen={isOpen}>
       <Modal.Title className="m-10">
         <Icon
           className="animate-spin"

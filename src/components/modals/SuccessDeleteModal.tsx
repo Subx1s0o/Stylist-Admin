@@ -1,13 +1,10 @@
+import { ModalProps } from "@/types/modal-props.type";
 import Button from "../ui/Button";
 import Modal from "./Modal";
 
-interface Props {
-  close: () => void;
-}
-
-export default function SuccessDeleteModal({ close }: Props) {
+export default function SuccessDeleteModal({ close, isOpen }: ModalProps) {
   return (
-    <Modal.Overlay>
+    <Modal.Overlay isOpen={isOpen}>
       <Modal>
         <Modal.Title className="mb-10">Послуга успішно видалена!</Modal.Title>
         <div className="flex gap-5 justify-center">

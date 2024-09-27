@@ -1,12 +1,9 @@
 import Button from "@/components/ui/Button";
+import { ModalProps } from "@/types/modal-props.type";
 import Modal from "../Modal";
-interface Props {
-  close: () => void;
-}
-
-export default function SuccessAddModal({ close }: Props) {
+export default function SuccessAddModal({ close, isOpen }: ModalProps) {
   return (
-    <Modal.Overlay>
+    <Modal.Overlay isOpen={isOpen}>
       <Modal>
         <Modal.Title className="mb-10">Послуга успішно додана!</Modal.Title>
         <div className="flex gap-5 justify-center">

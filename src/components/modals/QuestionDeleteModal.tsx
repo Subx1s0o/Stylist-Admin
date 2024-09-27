@@ -1,15 +1,19 @@
+import { ModalProps } from "@/types/modal-props.type";
 import Button from "../ui/Button";
 import Modal from "./Modal";
-
-interface Props {
+interface Props extends ModalProps {
   id: string;
-  close: () => void;
   onDelete: (id: string) => void;
 }
 
-export default function QuestionDeleteModal({ id, close, onDelete }: Props) {
+export default function QuestionDeleteModal({
+  id,
+  close,
+  onDelete,
+  isOpen,
+}: Props) {
   return (
-    <Modal.Overlay>
+    <Modal.Overlay isOpen={isOpen}>
       <Modal>
         <Modal.Title className="mb-5">Видалити послугу</Modal.Title>
         <Modal.Description className="mb-10">

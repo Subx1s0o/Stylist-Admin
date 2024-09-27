@@ -52,15 +52,16 @@ export default function ServiceList({ services }: ServiceListProps) {
 
       {isOpen && selectedServiceId && (
         <QuestionDeleteModal
+          isOpen={isOpen}
           id={selectedServiceId}
           close={closeModal}
           onDelete={handleDeleteService}
         />
       )}
 
-      {showErrorModal && <ErrorDeleteModal close={closeErrorModal} />}
+      {showErrorModal && <ErrorDeleteModal close={closeErrorModal} isOpen={showErrorModal} />}
 
-      {showSuccessModal && <SuccessDeleteModal close={closeSuccessModal} />}
+      {showSuccessModal && <SuccessDeleteModal close={closeSuccessModal} isOpen={showSuccessModal} />}
     </>
   );
 }

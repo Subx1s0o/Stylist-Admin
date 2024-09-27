@@ -1,12 +1,10 @@
 import Button from "@/components/ui/Button";
+import { ModalProps } from "@/types/modal-props.type";
 import Modal from "../Modal";
-interface Props {
-  close: () => void;
-}
 
-export default function ErrorAddModal({ close }: Props) {
+export default function ErrorAddModal({ close, isOpen }: ModalProps) {
   return (
-    <Modal.Overlay>
+    <Modal.Overlay isOpen={isOpen}>
       <Modal>
         <Modal.Title className="mb-5">
           Помилка при додаванні послуги!
