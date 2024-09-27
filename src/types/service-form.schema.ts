@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const ServiceFormSchema = z.object({
   title: z.string().min(1, "Назва послуги обов'язкова"),
-  duration_work: z.string().min(1, "Тривалість роботи обов'язкова"),
+  duration_work: z.string().optional(),
   duration_consultation: z
     .string()
     .min(1, "Тривалість консультації обов'язкова"),

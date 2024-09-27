@@ -72,7 +72,7 @@ export default function AddForm({
         </div>
         <div className="flex justify-between">
           <div className="flex flex-col gap-8 max-w-[347px]">
-            <FormInput control={control} name="title" label="Назва послуги" />
+            <FormInput control={control} name="title" label="Назва послуги*" />
             <div className="flex flex-col gap-3">
               <FormInput
                 control={control}
@@ -82,13 +82,13 @@ export default function AddForm({
               <FormInput
                 control={control}
                 name="duration_consultation"
-                label="Тривалість консултації"
+                label="Тривалість консультації*"
               />
               <FormInput
                 control={control}
                 type="number"
                 name="price"
-                label="Вартість"
+                label="Вартість*"
               />
             </div>
             <FormTextArea
@@ -102,7 +102,7 @@ export default function AddForm({
             <FormTextArea
               control={control}
               name="result"
-              label="Результат"
+              label="Результат*"
               maxLength={325}
               attention="Максимальна кількість символів 325"
             />
@@ -111,7 +111,7 @@ export default function AddForm({
             <FileInput
               control={control}
               name="file"
-              label="Фото"
+              label="Фото*"
               className="mb-8"
               attention="Доступні формати avif, webp, png, jpg, jpeg"
             />
