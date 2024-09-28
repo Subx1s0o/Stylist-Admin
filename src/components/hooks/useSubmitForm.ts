@@ -1,6 +1,7 @@
 import { ServiceFormValues } from "@/types/service-form.schema";
 import { useState } from "react";
 import updateService, { addService } from "../utils/services";
+import { toBase64 } from "../utils/toBase64";
 
 interface SubmitFormProps {
   category: "style" | "makeup";
@@ -21,39 +22,31 @@ const useSubmitForm = ({
 
   const submitForm = async (data: ServiceFormValues) => {
     setLoading(true);
-    const formData = new FormData();
 
-    formData.append("file", data.file[0]);
-    formData.append("title", data.title);
-    formData.append("duration_work", data.duration_work || "");
-    formData.append("duration_consultation", data.duration_consultation);
-    formData.append("price", data.price);
-    formData.append("attention", data.attention || "");
-    formData.append("result", data.result);
-    formData.append("category", category);
-    formData.append("format", activeFormat);
-
-    const stages: Record<number, string> = {
-      1: data["1"] || "",
-      2: data["2"] || "",
-      3: data["3"] || "",
-      4: data["4"] || "",
-      5: data["5"] || "",
-      6: data["6"] || "",
+    const serviceData = {
+      title: data.title,
+      duration_work: data.duration_work || "",
+      duration_consultation: data.duration_consultation,
+      price: Number(data.price),
+      attention: data.attention || "",
+      result: data.result,
+      format: activeFormat as "online" | "offline",
+      category: category,
+      image: (await toBase64(data.image[0])) as string,
+      stages: {
+        "1": data["1"] || "",
+        "2": data["2"] || "",
+        "3": data["3"] || "",
+        "4": data["4"] || "",
+        "5": data["5"] || "",
+        "6": data["6"] || "",
+      },
     };
-
-    for (const key in stages) {
-      if (!stages[key]) {
-        delete stages[key];
-      }
-    }
-    formData.append("stages", JSON.stringify(stages));
-
     try {
       if (mode === "ADD") {
-        await addService(formData);
+        await addService(serviceData);
       } else {
-        await updateService(id, formData);
+        await updateService(id, serviceData);
       }
 
       setSuccess(true);

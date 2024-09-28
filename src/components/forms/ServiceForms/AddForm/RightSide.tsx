@@ -8,7 +8,7 @@ export default function RightSide({ control }: { control: Control<any> }) {
     <>
       <FileInput
         control={control}
-        name="file"
+        name="image"
         label="Фото*"
         className="mb-8"
         attention="Доступні формати avif, webp, png, jpg, jpeg"

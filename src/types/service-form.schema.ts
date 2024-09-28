@@ -12,7 +12,7 @@ export const ServiceFormSchema = z.object({
     .string()
     .min(50, "Мінімальна кількість символів 50, максимально допустима - 325")
     .max(325, "Максимальна кількість символів 325"),
-  file: z
+  image: z
     .any()
     .refine((files) => {
       return (

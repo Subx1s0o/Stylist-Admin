@@ -1,6 +1,7 @@
 import { instance } from "@/instance";
-import { Service } from "@/types/service.type";
+import { SendService, Service } from "@/types/service.type";
 import { notFound } from "next/navigation";
+
 export const deleteService = async (id: string) => {
   await instance.delete(`/services/${id}`);
 };
@@ -14,26 +15,23 @@ export async function fetchService(id: string) {
   }
 }
 
-export async function addService(formData: FormData) {
+export async function addService(serviceData: SendService) {
   try {
-    const res = await instance.post<Service>("/services", formData, {
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-    });
+    const res = await instance.post<Service>("/services", serviceData);
     return res.data;
   } catch (error) {
+    console.error("Error while adding service:", error);
     throw new Error("Error by adding Service");
   }
 }
 
-export default async function updateService(id: string, formData: FormData) {
+export default async function updateService(
+  id: string,
+  serviceData: SendService
+) {
   try {
-    const res = await instance.patch<Service>(`/services/${id}`, formData, {
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-    });
+    const res = await instance.patch<Service>(`/services/${id}`, serviceData);
+
     return res.data;
   } catch (error) {
     throw new Error("Error by adding Service");
