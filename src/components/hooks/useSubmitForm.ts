@@ -1,8 +1,20 @@
-import { instance } from "@/instance";
 import { ServiceFormValues } from "@/types/service-form.schema";
 import { useState } from "react";
+import updateService, { addService } from "../utils/services";
 
-const useSubmitForm = (category: "style" | "makeup", activeFormat: string) => {
+interface SubmitFormProps {
+  category: "style" | "makeup";
+  activeFormat: string;
+  mode: "ADD" | "UPDATE";
+  id?: string;
+}
+
+const useSubmitForm = ({
+  id = "",
+  category,
+  activeFormat,
+  mode,
+}: SubmitFormProps) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -38,11 +50,12 @@ const useSubmitForm = (category: "style" | "makeup", activeFormat: string) => {
     formData.append("stages", JSON.stringify(stages));
 
     try {
-      await instance.post("/services", formData, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+      if (mode === "ADD") {
+        await addService(formData);
+      } else {
+        await updateService(id, formData);
+      }
+
       setSuccess(true);
     } catch (error) {
       setError(true);

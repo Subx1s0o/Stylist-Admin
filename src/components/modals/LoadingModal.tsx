@@ -1,5 +1,5 @@
 import Icon from "@/components/features/Icon";
-import Modal from "../Modal";
+import Modal from "./Modal";
 
 import { ModalProps } from "@/types/modal-props.type";
 

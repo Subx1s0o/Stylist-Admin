@@ -36,10 +36,10 @@ export default function FormatSwitcher({
         type="button"
         data-format="online"
         className={cn(
-          "relative p-2 text-lg transition-colors z-10",
+          "relative p-2 text-lg rounded-xl transition-colors z-10",
           activeFormat === "online"
             ? "text-black"
-            : "text-grey hover:text-black"
+            : "text-grey hover:bg-grey hover:text-black"
         )}
         onClick={() => changeFormat("online")}
       >
@@ -49,10 +49,10 @@ export default function FormatSwitcher({
         type="button"
         data-format="offline"
         className={cn(
-          "relative p-2 text-lg transition-colors z-10",
+          "relative p-2 text-lg rounded-xl  transition-colors z-10",
           activeFormat === "offline"
             ? "text-black"
-            : "text-grey hover:text-black"
+            : "text-grey hover:bg-grey hover:text-black"
         )}
         onClick={() => changeFormat("offline")}
       >

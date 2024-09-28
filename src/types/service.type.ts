@@ -10,6 +10,8 @@ export type Service = {
   price: string;
   attention?: Translates;
   result: Translates;
+  format: "online" | "offline";
+  category: "makeup" | "style";
   file: File;
   stages: {
     "1"?: Translates;

@@ -1,9 +1,6 @@
-import QuestionDeleteModal from "@/components/modals/QuestionDeleteModal";
-import SuccessDeleteModal from "@/components/modals/SuccessDeleteModal";
-
 import { useDeleteModal } from "@/components/hooks/useDeleteModal";
 import useQuestionModal from "@/components/hooks/useQuestionModal";
-import ErrorDeleteModal from "@/components/modals/ErrorDeleteModal";
+import DeleteServiceModals from "@/components/modals/DeleteServiceModals";
 import { Service } from "@/types/service.type";
 import { useState } from "react";
 import ServiceCard from "./ServiceCard";
@@ -49,19 +46,16 @@ export default function ServiceList({ services }: ServiceListProps) {
           />
         ))}
       </ul>
-
-      {isOpen && selectedServiceId && (
-        <QuestionDeleteModal
-          isOpen={isOpen}
-          id={selectedServiceId}
-          close={closeModal}
-          onDelete={handleDeleteService}
-        />
-      )}
-
-      {showErrorModal && <ErrorDeleteModal close={closeErrorModal} isOpen={showErrorModal} />}
-
-      {showSuccessModal && <SuccessDeleteModal close={closeSuccessModal} isOpen={showSuccessModal} />}
+      <DeleteServiceModals
+        isOpen={isOpen}
+        closeModal={closeModal}
+        closeErrorModal={closeErrorModal}
+        selectedServiceId={selectedServiceId || ""}
+        closeSuccessModal={closeSuccessModal}
+        showSuccessModal={showSuccessModal}
+        showErrorModal={showErrorModal}
+        handleDeleteService={handleDeleteService}
+      />
     </>
   );
 }

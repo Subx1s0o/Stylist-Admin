@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import DescriptionBar from "../components/common/Services/DescriptionBar";
+import DescriptionBar from "../components/common/DescriptionBar";
 import ServiceList from "../components/common/Services/ServiceList";
 import ServicesSkeleton from "../components/common/Services/ServicesSkeleton";
 import FormatSwitcher from "../components/features/FormatSwitcher";
@@ -32,7 +32,7 @@ export default function ServicePage({
         )}
         <Link
           href={`/dashboard/services/${category}/add`}
-          className="px-8 py-4 bg-black text-white flex gap-3 ml-auto items-center rounded-xl"
+          className="px-8 py-4 bg-black transition-colors hover:bg-gray-950 text-white flex gap-3 ml-auto items-center rounded-xl"
         >
           <span>
             <Icon width={24} height={24} id="icon-plus" />

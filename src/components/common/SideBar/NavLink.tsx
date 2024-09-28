@@ -22,7 +22,7 @@ export default function NavLink({
   return (
     <Link
       href={href}
-      className={`text-xl flex gap-3 items-center px-5 py-2 ${activeClass}`}
+      className={`text-xl flex gap-3 transition-colors duration-200 border-2 border-transparent hover:border-white rounded-xl items-center px-5 py-2 ${activeClass}`}
     >
       <span>
         <Icon id={iconId} width={32} height={32} className={iconFill} />

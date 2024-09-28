@@ -4,26 +4,29 @@ import FormatSwitcher from "@/components/features/FormatSwitcher";
 import Icon from "@/components/features/Icon";
 import useChangeFormat from "@/components/hooks/useChangeFormat";
 import useSubmitForm from "@/components/hooks/useSubmitForm";
-import AddServiceModals from "@/components/modals/AddServiceModals";
+import UpdateServiceModals from "@/components/modals/UpdateServiceModals";
 import Button from "@/components/ui/Button";
 import {
   ServiceFormSchema,
   ServiceFormValues,
 } from "@/types/service-form.schema";
+import { Service } from "@/types/service.type";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import LeftSide from "./LeftSide";
 import RightSide from "./RightSide";
 
-export default function AddForm({
+export default function UpdateForm({
   hasFormat,
   category,
   defaultFormat,
+  service,
 }: {
   hasFormat?: boolean;
   defaultFormat: "online" | "offline";
   category: "style" | "makeup";
+  service: Service;
 }) {
   const { activeFormat, changeFormat } = useChangeFormat(defaultFormat);
   const ref = useRef<HTMLFormElement>(null);
@@ -36,7 +39,7 @@ export default function AddForm({
   });
 
   const { loading, error, success, submitForm, setError, setSuccess } =
-    useSubmitForm({ category, activeFormat, mode: "ADD" });
+    useSubmitForm({ category, activeFormat, mode: "UPDATE", id: service._id });
 
   const onSubmit: SubmitHandler<ServiceFormValues> = async (data) => {
     await submitForm(data);
@@ -65,24 +68,24 @@ export default function AddForm({
             <span>
               <Icon width={24} height={24} id="icon-plus" />
             </span>
-            {isSubmitting ? "Очікуємо..." : "Додати"}
+            {isSubmitting ? "Очікуємо..." : "Змінити"}
           </Button>
         </div>
         <div className="flex justify-between">
           <div className="flex flex-col gap-8 max-w-[347px]">
-            <LeftSide control={control} />
+            <LeftSide control={control} service={service} />
           </div>
           <div className="flex flex-col max-w-[347px]">
-            <RightSide control={control} />
+            <RightSide control={control} service={service} />
           </div>
         </div>
       </form>
 
-      <AddServiceModals
+      <UpdateServiceModals
         loading={loading}
         error={error}
-        setError={setError}
         success={success}
+        setError={setError}
         setSuccess={setSuccess}
       />
     </>
