@@ -22,7 +22,7 @@ function Overlay({ children, isOpen }: ModalProps): JSX.Element {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    config: { tension: 220, friction: 20, duration: 200 },
+    config: { tension: 180, friction: 20, duration: 150 },
   });
 
   return (
