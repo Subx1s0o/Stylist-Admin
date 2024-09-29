@@ -41,11 +41,7 @@ export default function ServicePage({
         </Link>
       </div>
       <DescriptionBar />
-      {isLoading ? (
-        <ServicesSkeleton />
-      ) : (
-        <ServiceList services={data.services} />
-      )}
+      {isLoading ? <ServicesSkeleton /> : <ServiceList services={data.data} />}
       {error && "error"}
     </>
   );
