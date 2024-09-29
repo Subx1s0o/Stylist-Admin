@@ -1,9 +1,12 @@
 import Button from "@/components/ui/Button";
 import { ModalProps } from "@/types/modal-props.type";
+import { NotificationType } from "@/types/notification.type";
+import useNotificationMessage from "../hooks/useNotificationMessage";
+import { cn } from "../utils/cn";
 import Modal from "./Modal";
 
 interface NotificationModalProps extends ModalProps {
-  type: "add" | "update" | "delete" | "error";
+  type: NotificationType;
 }
 
 export default function NotificationModal({
@@ -11,31 +14,14 @@ export default function NotificationModal({
   isOpen,
   type,
 }: NotificationModalProps) {
-  let title: string;
-  let description: string | null = null;
-
-  switch (type) {
-    case "add":
-      title = "Послуга успішно додана!";
-      break;
-    case "update":
-      title = "Послуга успішно змінена!";
-      break;
-    case "delete":
-      title = "Послуга успішно видалена!";
-      break;
-    case "error":
-      title = "Помилка при видаленні!";
-      description = "Ой! Сталася помилка, спробуйте будь ласка ще раз.";
-      break;
-    default:
-      title = "";
-  }
+  const { title, description } = useNotificationMessage(type);
 
   return (
     <Modal.Overlay isOpen={isOpen}>
       <Modal>
-        <Modal.Title className="mb-10">{title}</Modal.Title>
+        <Modal.Title className={cn("mb-10", { "mb-5": description })}>
+          {title}
+        </Modal.Title>
         {description && (
           <Modal.Description className="mb-10">{description}</Modal.Description>
         )}

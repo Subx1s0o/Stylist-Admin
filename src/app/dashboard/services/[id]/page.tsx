@@ -1,6 +1,6 @@
 import UploadForm from "@/components/forms/ServiceForms/UpdateForm/UpdateForm";
 import { fetchService } from "@/components/utils/services";
-import ServiceLayout from "@/views/ServiceLayout";
+import GreyLayout from "@/views/GreyLayout";
 
 export default async function UpdatePage({
   params: { id },
@@ -10,7 +10,7 @@ export default async function UpdatePage({
   const service = await fetchService(id);
 
   return (
-    <ServiceLayout>
+    <GreyLayout>
       <div className=" mx-auto max-w-7xl">
         <h1 className="text-xxl text-center mb-10">Змінити послугу</h1>
         <div>
@@ -21,6 +21,6 @@ export default async function UpdatePage({
           />
         </div>
       </div>
-    </ServiceLayout>
+    </GreyLayout>
   );
 }

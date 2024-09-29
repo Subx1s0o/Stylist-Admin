@@ -26,7 +26,7 @@ export default function AddServiceModals({
         <NotificationModal
           close={() => setError(false)}
           isOpen={error}
-          type="add"
+          type="add-error"
         />
       )}
 
@@ -34,7 +34,7 @@ export default function AddServiceModals({
         <NotificationModal
           close={() => setSuccess(false)}
           isOpen={success}
-          type="add"
+          type="add-success"
         />
       )}
     </>

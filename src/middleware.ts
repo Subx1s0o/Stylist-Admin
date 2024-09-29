@@ -17,6 +17,7 @@ export default async function middleware(req: NextRequest) {
         Authorization: `Bearer ${token}`,
       },
     });
+
     session = data;
   } catch (error) {
     if (req.nextUrl.pathname.startsWith("/dashboard")) {

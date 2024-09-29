@@ -32,14 +32,14 @@ export default function DeleteServiceModals({
         <NotificationModal
           close={closeSuccessModal}
           isOpen={showSuccessModal}
-          type="delete"
+          type="delete-success"
         />
       )}
       {showErrorModal && (
         <NotificationModal
           close={closeErrorModal}
           isOpen={showErrorModal}
-          type="error"
+          type="delete-error"
         />
       )}
     </>

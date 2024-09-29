@@ -22,7 +22,8 @@ const useSubmitForm = ({
 
   const submitForm = async (data: ServiceFormValues) => {
     setLoading(true);
-
+    setError(false);
+    setSuccess(false);
     const serviceData = {
       title: data.title,
       duration_work: data.duration_work || "",

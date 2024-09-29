@@ -47,7 +47,9 @@ function Title({ className, children }: ModalProps): JSX.Element {
 }
 
 function Description({ className, children }: ModalProps): JSX.Element {
-  return <p className={`text-sm text-center ${className}`}>{children}</p>;
+  return (
+    <p className={`text-sm text-center max-w-80 ${className}`}>{children}</p>
+  );
 }
 
 const Modal = Object.assign(Main, {

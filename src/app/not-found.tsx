@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/components/ui/Button";
-import ServiceLayout from "@/views/ServiceLayout";
+import ServiceLayout from "@/views/GreyLayout";
 import { useRouter } from "next/navigation";
 
 export default function NotFound() {
