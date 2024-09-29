@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const exo_2 = Exo_2({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -20,9 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uk-UA">
-      <body
-        className={`${exo_2.className} antialiased font-exo2 bg-white p-5 h-screen`}
-      >
+      <body className={`${exo_2.className} antialiased  bg-white p-5 h-screen`}>
         <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>

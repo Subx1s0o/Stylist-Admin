@@ -1,5 +1,7 @@
 "use client";
+import Pagination from "@/components/features/Pagination";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import DescriptionBar from "../components/common/DescriptionBar";
 import ServiceList from "../components/common/Services/ServiceList";
 import ServicesSkeleton from "../components/common/Services/ServicesSkeleton";
@@ -16,10 +18,23 @@ export default function ServicePage({
   defaultFormat: "online" | "offline";
 }) {
   const { activeFormat, changeFormat } = useChangeFormat(defaultFormat);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const { data, error, isLoading } = useFetchData(
+    category,
+    currentPage,
+    activeFormat
+  );
 
-  const { data, error, isLoading } = useFetchData(category, activeFormat);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFormat]);
 
-  // if (error) return <div>Error: {error.message}</div>;
+  useEffect(() => {
+    if (data) {
+      setTotalPages(data.totalPages);
+    }
+  }, [data]);
 
   return (
     <>
@@ -43,6 +58,13 @@ export default function ServicePage({
       <DescriptionBar />
       {isLoading ? <ServicesSkeleton /> : <ServiceList services={data.data} />}
       {error && "error"}
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setPage={setCurrentPage}
+        />
+      )}
     </>
   );
 }

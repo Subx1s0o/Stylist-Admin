@@ -1,10 +1,12 @@
 import { instance } from "@/instance";
 import { useQuery } from "@tanstack/react-query";
 
-const fetchData = async (category: string, format?: string) => {
+const fetchData = async (category: string, page: number, format?: string) => {
   try {
     const response = await instance.get(
-      `/services/${category}?limit=7&${format && `format=${format}`}`
+      `/services/${category}?${
+        format && `format=${format}&limit=7&page=${page}`
+      }`
     );
 
     return response.data;
@@ -13,10 +15,14 @@ const fetchData = async (category: string, format?: string) => {
   }
 };
 
-export const useFetchData = (category: string, format?: string) => {
+export const useFetchData = (
+  category: string,
+  page: number,
+  format?: string
+) => {
   return useQuery({
-    queryKey: ["services", category, format],
-    queryFn: () => fetchData(category, format || ""),
+    queryKey: ["services", category, page, format],
+    queryFn: () => fetchData(category, page, format || ""),
     refetchInterval: 10 * 60 * 1000,
   });
 };
