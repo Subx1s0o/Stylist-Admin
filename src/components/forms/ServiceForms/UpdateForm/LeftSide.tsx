@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Service } from "@/types/service.type";
 import { Control } from "react-hook-form";
-import FormInput from "../FormInput";
-import FormTextArea from "../FormTextArea";
+import FormInput from "../../FormInput";
+import FormTextArea from "../../FormTextArea";
 
 export default function LeftSide({
   control,

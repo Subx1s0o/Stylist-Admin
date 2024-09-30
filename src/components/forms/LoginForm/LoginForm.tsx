@@ -1,12 +1,12 @@
 "use client";
 import Button from "@/components/ui/Button";
 import { BACKEND_URL } from "@/components/utils/backend.url";
-import { FormValues } from "@/types/login-form.type";
+import { LoginFormValues } from "@/types/login-form.type";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
-import LoginTextInput from "./LoginTextInput";
+import TextInputWithEye from "../TextInputWithEye";
 
 interface LoginResponse {
   accessToken: string;
@@ -18,9 +18,9 @@ export default function LoginForm({}) {
     control,
     handleSubmit,
     formState: { isSubmitting },
-  } = useForm<FormValues>();
+  } = useForm<LoginFormValues>();
   const router = useRouter();
-  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+  const onSubmit: SubmitHandler<LoginFormValues> = async (data) => {
     try {
       const res = await axios.post<LoginResponse>(`${BACKEND_URL}/auth/login`, {
         login: data.login,
@@ -40,7 +40,7 @@ export default function LoginForm({}) {
       className="flex flex-col items-center gap-10"
     >
       <div className="flex flex-col gap-3 ">
-        <LoginTextInput
+        <TextInputWithEye
           control={control}
           name="login"
           placeholder="*******"
@@ -48,10 +48,10 @@ export default function LoginForm({}) {
           type="text"
         />
 
-        <LoginTextInput
+        <TextInputWithEye
           control={control}
           name="password"
-          placeholder="*******"
+          placeholder="dfghfdjy!123"
           label="Пароль"
           type="password"
           hiding

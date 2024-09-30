@@ -27,7 +27,7 @@ export default function FormInput({
         className={cn(
           `bg-white outline-none rounded-xl border  border-grey transition-colors focus:border-black text-sm-thin w-[347px] py-2 px-3 h-[36px] ${className}`,
           {
-            "border-red-500": errors?.[name],
+            "border-error": errors?.[name],
           }
         )}
       />

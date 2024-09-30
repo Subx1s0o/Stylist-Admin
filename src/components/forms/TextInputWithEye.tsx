@@ -3,21 +3,22 @@
 import Icon from "@/components/features/Icon";
 import { ComponentProps, useState } from "react";
 import { Control, useController } from "react-hook-form";
+import { cn } from "../utils/cn";
 
-type LoginTextInputProps = ComponentProps<"input"> & {
+type TextInputWithEyeProps = ComponentProps<"input"> & {
   control: Control<any>;
   label?: string;
   name: string;
   hiding?: boolean;
 };
 
-export default function LoginTextInput({
+export default function TextInputWithEye({
   control,
   label,
   name,
   hiding,
   ...inputProps
-}: LoginTextInputProps) {
+}: TextInputWithEyeProps) {
   const [isHiding, setIsHiding] = useState<boolean>(hiding || false);
 
   const {
@@ -38,7 +39,10 @@ export default function LoginTextInput({
           {...control.register(name)}
           {...inputProps}
           type={isHiding ? "password" : "text"}
-          className="w-[347px] h-[36px] rounded-xl py-2 px-3 text-sm-thin"
+          className={cn(
+            "w-[347px] h-[36px]  border  border-grey rounded-xl py-2 px-3 text-sm-thin",
+            { "border-error": errors[name] }
+          )}
         />
         {hiding && (
           <button
@@ -54,7 +58,9 @@ export default function LoginTextInput({
           </button>
         )}
       </div>
-      {errors[name] && <p>{errors[name].message?.toString()}</p>}
+      {errors[name] && (
+        <p className="text-error text-xs">{errors[name].message?.toString()}</p>
+      )}
     </div>
   );
 }
