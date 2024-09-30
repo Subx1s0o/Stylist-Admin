@@ -11,7 +11,7 @@ export default function Button({
   children: ReactNode;
 }) {
   const buttonClasses = cn(
-    "py-4 px-7 rounded-xl transition-colors disabled:bg-grey disabled:cursor-not-allowed",
+    "py-4  px-7 rounded-xl text-black transition-colors disabled:bg-grey disabled:cursor-not-allowed",
     {
       "bg-black text-white border-none hover:bg-gray-950": variant === "black",
       "bg-transparent border border-black": variant === "outline",

@@ -43,12 +43,18 @@ function Overlay({ children, isOpen }: ModalProps): JSX.Element {
 }
 
 function Title({ className, children }: ModalProps): JSX.Element {
-  return <h2 className={`text-lg text-center ${className}`}>{children}</h2>;
+  return (
+    <h2 className={`text-lg text-black text-center ${className}`}>
+      {children}
+    </h2>
+  );
 }
 
 function Description({ className, children }: ModalProps): JSX.Element {
   return (
-    <p className={`text-sm text-center max-w-80 ${className}`}>{children}</p>
+    <p className={`text-sm text-black text-center max-w-80 ${className}`}>
+      {children}
+    </p>
   );
 }
 

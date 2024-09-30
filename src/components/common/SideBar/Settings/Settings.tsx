@@ -1,3 +1,4 @@
+import LogoutButton from "@/components/ui/LogoutButton";
 import NavLink from "../NavLink";
 
 export default function Settings() {
@@ -8,7 +9,7 @@ export default function Settings() {
         iconId="icon-settings"
         label="Змінити пароль"
       />
-      <NavLink href="/dashboard/logout" iconId="icon-logout" label="Вихід" />
+      <LogoutButton />
     </div>
   );
 }
