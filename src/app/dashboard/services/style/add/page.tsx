@@ -1,7 +1,7 @@
 import AddForm from "@/components/forms/ServiceForms/AddForm/AddForm";
 
 import GreyLayout from "@/views/GreyLayout";
-export default function page() {
+export default function AddPage() {
   return (
     <GreyLayout>
       <div className=" mx-auto max-w-7xl">
