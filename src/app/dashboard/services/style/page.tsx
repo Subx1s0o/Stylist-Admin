@@ -1,5 +1,5 @@
-import GreyLayout from "@/views/GreyLayout";
-import ServicePage from "@/views/ServicePage";
+import GreyLayout from "@/components/views/GreyLayout";
+import ServicePage from "@/components/views/ServicePage";
 export default function StylePage() {
   return (
     <GreyLayout>

@@ -1,53 +1,44 @@
-import { ServiceFormValues } from "@/types/service-form.schema";
+import { addService, updateService } from "@/utils/services";
 import { useState } from "react";
-import updateService, { addService } from "../utils/services";
-import { toBase64 } from "../utils/toBase64";
 
-interface SubmitFormProps {
-  category: "style" | "makeup";
-  activeFormat: string;
-  mode: "ADD" | "UPDATE";
+interface SubmitFormProps<T, FV> {
+  mode: "ADD" | "UPDATE" | "PORTFOLIO";
   id?: string;
+  prepareData: (data: FV) => Promise<T>;
 }
 
-const useSubmitForm = ({
+export function useSubmitForm<T, FV>({
   id = "",
-  category,
-  activeFormat,
   mode,
-}: SubmitFormProps) => {
+  prepareData,
+}: SubmitFormProps<T, FV>) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const submitForm = async (data: ServiceFormValues) => {
+  const submitForm = async (data: FV) => {
     setLoading(true);
     setError(false);
     setSuccess(false);
-    const serviceData = {
-      title: data.title,
-      duration_work: data.duration_work || "",
-      duration_consultation: data.duration_consultation,
-      price: Number(data.price),
-      attention: data.attention || "",
-      result: data.result,
-      format: activeFormat as "online" | "offline",
-      category: category,
-      image: (await toBase64(data.image[0])) as string,
-      stages: {
-        "1": data["1"] || "",
-        "2": data["2"] || "",
-        "3": data["3"] || "",
-        "4": data["4"] || "",
-        "5": data["5"] || "",
-        "6": data["6"] || "",
-      },
-    };
+
     try {
-      if (mode === "ADD") {
-        await addService(serviceData);
-      } else {
-        await updateService(id, serviceData);
+      const preparedData = await prepareData(data);
+
+      switch (mode) {
+        case "ADD": {
+          await addService<T>(preparedData);
+          break;
+        }
+        case "UPDATE": {
+          await updateService<T>(id, preparedData);
+          break;
+        }
+        case "PORTFOLIO": {
+          break;
+        }
+        default: {
+          throw new Error("The chosen mode is not supported");
+        }
       }
 
       setSuccess(true);
@@ -59,6 +50,6 @@ const useSubmitForm = ({
   };
 
   return { loading, error, success, submitForm, setError, setSuccess };
-};
+}
 
 export default useSubmitForm;

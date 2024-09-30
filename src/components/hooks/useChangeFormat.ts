@@ -1,9 +1,10 @@
+import { Format } from "@/types/global.types";
 import { useState } from "react";
 
-export default function useChangeFormat(format: "online" | "offline") {
+export default function useChangeFormat(format: Format) {
   const [activeFormat, setActiveFormat] = useState(format);
 
-  const changeFormat = (newFormat: "online" | "offline") => {
+  const changeFormat = (newFormat: Format) => {
     if (newFormat !== activeFormat) {
       setActiveFormat(newFormat);
     }

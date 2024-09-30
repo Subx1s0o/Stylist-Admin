@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "../utils/cn";
+import { cn } from "@/utils/cn";
 import Icon from "./Icon";
 
 interface PaginationProps {

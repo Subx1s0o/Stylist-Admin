@@ -1,4 +1,4 @@
-import { instance } from "@/instance";
+import { instance } from "@/utils/instance";
 import Cookies from "js-cookie";
 
 export function logout() {

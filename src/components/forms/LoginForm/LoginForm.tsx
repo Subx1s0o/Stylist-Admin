@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/components/ui/Button";
-import { BACKEND_URL } from "@/components/utils/backend.url";
 import { LoginFormValues } from "@/types/login-form.type";
+import { BACKEND_URL } from "@/utils/backend.url";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";

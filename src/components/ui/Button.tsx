@@ -1,4 +1,4 @@
-import { cn } from "@/components/utils/cn";
+import { cn } from "@/utils/cn";
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
 export default function Button({

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { BACKEND_URL } from "./components/utils/backend.url";
+import { BACKEND_URL } from "./utils/backend.url";
 
 interface isLogged {
   isLogged: boolean;

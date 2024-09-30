@@ -23,7 +23,7 @@ export type Service = {
   };
 };
 
-export type SendService = {
+export type AddService = {
   title: string;
   duration_work?: string;
   duration_consultation: string;
@@ -41,4 +41,8 @@ export type SendService = {
     "5"?: string;
     "6"?: string;
   };
+};
+
+export type UpdateService = AddService & {
+  id: string;
 };

@@ -3,7 +3,7 @@ import { useMemo } from "react";
 
 interface NotificationMessage {
   title: string;
-  description: string | null; 
+  description: string | null;
 }
 
 const useNotificationMessage = (
@@ -39,7 +39,7 @@ const useNotificationMessage = (
         return {
           title: "Невідома помилка",
           description:
-            "Виникла невідома помилка, спробуйте, будь ласка, пізніше", // повертаємо рядок
+            "Виникла невідома помилка, спробуйте, будь ласка, пізніше",
         };
     }
   }, [type]);

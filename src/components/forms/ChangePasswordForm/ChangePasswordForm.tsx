@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Button from "@/components/ui/Button";
-import { changePassword, logout } from "@/components/utils/admin";
-import { cn } from "@/components/utils/cn";
 import { ChangePasswordFormValues } from "@/types/change-password.type";
+import { changePassword, logout } from "@/utils/admin";
+import { cn } from "@/utils/cn";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";

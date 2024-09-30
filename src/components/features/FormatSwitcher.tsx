@@ -1,10 +1,11 @@
 "use client";
+import { Format } from "@/types/global.types";
+import { cn } from "@/utils/cn";
 import { useEffect, useRef } from "react";
-import { cn } from "../utils/cn";
 
 type FormatSwitcherProps = {
-  changeFormat: (format: "online" | "offline") => void;
-  activeFormat: "online" | "offline";
+  changeFormat: (format: Format) => void;
+  activeFormat: Format;
 };
 
 export default function FormatSwitcher({

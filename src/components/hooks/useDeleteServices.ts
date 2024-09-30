@@ -1,5 +1,5 @@
-import { deleteService } from "@/components/utils/services";
 import { Service } from "@/types/service.type";
+import { deleteService } from "@/utils/services";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const useDeleteService = () => {

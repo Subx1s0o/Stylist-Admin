@@ -1,6 +1,6 @@
 import { ModalProps } from "@/types/modal-props.type";
-import Button from "../ui/Button";
-import Modal from "./Modal";
+import Button from "../../ui/Button";
+import Modal from "../Modal";
 interface Props extends ModalProps {
   id: string;
   onDelete: (id: string) => void;

@@ -2,25 +2,26 @@
 import Pagination from "@/components/features/Pagination";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import DescriptionBar from "../components/common/DescriptionBar";
-import ServiceList from "../components/common/Services/ServiceList";
-import ServicesSkeleton from "../components/common/Services/ServicesSkeleton";
-import FormatSwitcher from "../components/features/FormatSwitcher";
-import Icon from "../components/features/Icon";
-import useChangeFormat from "../components/hooks/useChangeFormat";
-import { useFetchData } from "../components/hooks/useFetchData";
+import DescriptionBar from "../common/DescriptionBar";
+import ServiceList from "../common/Services/ServiceList";
+import ServicesSkeleton from "../common/Services/ServicesSkeleton";
+import FormatSwitcher from "../features/FormatSwitcher";
+import Icon from "../features/Icon";
+import useChangeFormat from "../hooks/useChangeFormat";
+import { useFetchServices } from "../hooks/useFetchServices";
+import { Category, Format } from "@/types/global.types";
 
 export default function ServicePage({
   defaultFormat,
   category,
 }: {
-  category: string;
-  defaultFormat: "online" | "offline";
+  category: Category;
+  defaultFormat: Format;
 }) {
   const { activeFormat, changeFormat } = useChangeFormat(defaultFormat);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const { data, error, isLoading } = useFetchData(
+  const { data, error, isLoading } = useFetchServices(
     category,
     currentPage,
     activeFormat

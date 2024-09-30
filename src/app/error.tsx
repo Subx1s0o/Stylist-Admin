@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/components/ui/Button";
-import GreyLayout from "@/views/GreyLayout";
+import GreyLayout from "@/components/views/GreyLayout";
 export default function ErrorPage() {
   const handleReload = () => {
     window.location.reload();

@@ -4,7 +4,7 @@ import { DeleteServiceModalsProps } from "@/types/service-modals-props.type";
 
 import dynamic from "next/dynamic";
 const QuestionDeleteModal = dynamic(
-  () => import("@/components/modals/QuestionDeleteModal"),
+  () => import("@/components/modals/Services/QuestionDeleteModal"),
   {
     ssr: false,
   }

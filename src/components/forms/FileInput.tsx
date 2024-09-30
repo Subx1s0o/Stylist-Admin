@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Icon from "@/components/features/Icon";
-import { cn } from "@/components/utils/cn";
+import { cn } from "@/utils/cn";
 import { Control, useController } from "react-hook-form";
 
 type FileInputProps = {
@@ -54,10 +54,10 @@ export default function FileInput({
           <Icon width={24} height={24} id="icon-upload" />
         </label>
         {!errors[name] && attention && (
-          <p className="text-xs mt-1 ">{attention}</p>
+          <p className="text-xs mt-1  ">{attention}</p>
         )}
         {errors[name] && (
-          <p className="text-error text-xs mt-1">
+          <p className="text-error text-xs mt-1 max-w-[347px]">
             {errors[name]?.message?.toString()}
           </p>
         )}

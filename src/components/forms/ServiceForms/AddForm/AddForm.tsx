@@ -4,12 +4,14 @@ import FormatSwitcher from "@/components/features/FormatSwitcher";
 import Icon from "@/components/features/Icon";
 import useChangeFormat from "@/components/hooks/useChangeFormat";
 import useSubmitForm from "@/components/hooks/useSubmitForm";
-import AddServiceModals from "@/components/modals/AddServiceModals";
+import AddServiceModals from "@/components/modals/Services/AddServiceModals";
 import Button from "@/components/ui/Button";
 import {
   ServiceFormSchema,
   ServiceFormValues,
 } from "@/types/service-form.schema";
+import { AddService } from "@/types/service.type";
+import { prepareAddServiceData } from "@/utils/services";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -36,7 +38,11 @@ export default function AddForm({
   });
 
   const { loading, error, success, submitForm, setError, setSuccess } =
-    useSubmitForm({ category, activeFormat, mode: "ADD" });
+    useSubmitForm<AddService, ServiceFormValues>({
+      prepareData: (data) =>
+        prepareAddServiceData(data, activeFormat, category),
+      mode: "ADD",
+    });
 
   const onSubmit: SubmitHandler<ServiceFormValues> = async (data) => {
     await submitForm(data);

@@ -1,7 +1,7 @@
 import { ModalProps } from "@/types/modal-props.type";
+import { logout } from "@/utils/admin";
 import { useRouter } from "next/navigation";
 import Button from "../ui/Button";
-import { logout } from "../utils/admin";
 import Modal from "./Modal";
 
 export default function LogoutModal({ close, isOpen }: ModalProps) {

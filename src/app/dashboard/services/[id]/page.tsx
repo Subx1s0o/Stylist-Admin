@@ -1,6 +1,6 @@
 import UploadForm from "@/components/forms/ServiceForms/UpdateForm/UpdateForm";
-import { fetchService } from "@/components/utils/services";
-import GreyLayout from "@/views/GreyLayout";
+import GreyLayout from "@/components/views/GreyLayout";
+import { fetchService } from "@/utils/services";
 
 export default async function UpdatePage({
   params: { id },

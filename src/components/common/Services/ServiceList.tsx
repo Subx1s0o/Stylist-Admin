@@ -1,6 +1,6 @@
 import { useDeleteModal } from "@/components/hooks/useDeleteModal";
 import useQuestionModal from "@/components/hooks/useQuestionModal";
-import DeleteServiceModals from "@/components/modals/DeleteServiceModals";
+import DeleteServiceModals from "@/components/modals/Services/DeleteServiceModals";
 import { Service } from "@/types/service.type";
 import { useState } from "react";
 import ServiceCard from "./ServiceCard";

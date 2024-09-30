@@ -4,13 +4,14 @@ import FormatSwitcher from "@/components/features/FormatSwitcher";
 import Icon from "@/components/features/Icon";
 import useChangeFormat from "@/components/hooks/useChangeFormat";
 import useSubmitForm from "@/components/hooks/useSubmitForm";
-import UpdateServiceModals from "@/components/modals/UpdateServiceModals";
+import UpdateServiceModals from "@/components/modals/Services/UpdateServiceModals";
 import Button from "@/components/ui/Button";
 import {
   ServiceFormSchema,
   ServiceFormValues,
 } from "@/types/service-form.schema";
-import { Service } from "@/types/service.type";
+import { Service, UpdateService } from "@/types/service.type";
+import { prepareUpdateServiceData } from "@/utils/services";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -39,7 +40,12 @@ export default function UpdateForm({
   });
 
   const { loading, error, success, submitForm, setError, setSuccess } =
-    useSubmitForm({ category, activeFormat, mode: "UPDATE", id: service._id });
+    useSubmitForm<UpdateService, ServiceFormValues>({
+      id: service._id,
+      prepareData: (data) =>
+        prepareUpdateServiceData(service._id, data, activeFormat, category),
+      mode: "UPDATE",
+    });
 
   const onSubmit: SubmitHandler<ServiceFormValues> = async (data) => {
     await submitForm(data);

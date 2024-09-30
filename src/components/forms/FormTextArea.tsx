@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { cn } from "@/components/utils/cn";
+import { cn } from "@/utils/cn";
 import { ComponentProps } from "react";
 import { Control, useController } from "react-hook-form";
 

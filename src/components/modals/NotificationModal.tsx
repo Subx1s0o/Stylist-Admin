@@ -1,8 +1,8 @@
 import Button from "@/components/ui/Button";
 import { ModalProps } from "@/types/modal-props.type";
 import { NotificationType } from "@/types/notification.type";
+import { cn } from "@/utils/cn";
 import useNotificationMessage from "../hooks/useNotificationMessage";
-import { cn } from "../utils/cn";
 import Modal from "./Modal";
 
 interface NotificationModalProps extends ModalProps {

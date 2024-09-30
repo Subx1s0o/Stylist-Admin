@@ -1,5 +1,5 @@
 import AddForm from "@/components/forms/ServiceForms/AddForm/AddForm";
-import GreyLayout from "@/views/GreyLayout";
+import GreyLayout from "@/components/views/GreyLayout";
 
 export default function AddPage() {
   return (
