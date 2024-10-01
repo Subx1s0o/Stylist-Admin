@@ -10,9 +10,9 @@ export default function GreyLayout({
 }) {
   return (
     <section
-      className={cn(
-        `relative bg-lightGrey rounded-[20px] p-[60px] h-full ${className}`
-      )}
+      className={cn("relative bg-lightGrey rounded-[20px] p-[60px] h-full ", {
+        className,
+      })}
     >
       {children}
     </section>

@@ -1,3 +1,4 @@
+import { addImageToPortfolio } from "@/utils/portfolio";
 import { addService, updateService } from "@/utils/services";
 import { useState } from "react";
 
@@ -34,6 +35,7 @@ export function useSubmitForm<T, FV>({
           break;
         }
         case "PORTFOLIO": {
+          await addImageToPortfolio<T>(preparedData);
           break;
         }
         default: {

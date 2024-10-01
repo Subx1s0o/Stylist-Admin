@@ -1,4 +1,4 @@
-import { SubmitModalsProps } from "@/types/submit-modals-props.type";
+// AddPortfolioModals.tsx
 import dynamic from "next/dynamic";
 
 const LoadingModal = dynamic(() => import("@/components/modals/LoadingModal"), {
@@ -11,30 +11,38 @@ const NotificationModal = dynamic(
   }
 );
 
-export default function AddServiceModals({
+interface Props {
+  closeError: () => void;
+  closeSuccess: () => void;
+  loading: boolean;
+  error: boolean;
+  success: boolean;
+}
+
+export default function AddPortfolioModals({
   loading,
   error,
-  setError,
+  closeError,
   success,
-  setSuccess,
-}: SubmitModalsProps) {
+  closeSuccess,
+}: Props) {
   return (
     <>
       {loading && <LoadingModal isOpen={loading} />}
 
       {error && (
         <NotificationModal
-          close={() => setError(false)}
+          close={closeError}
           isOpen={error}
-          type="update-error"
+          type="portfolio-error"
         />
       )}
 
       {success && (
         <NotificationModal
-          close={() => setSuccess(false)}
+          close={closeSuccess}
           isOpen={success}
-          type="update-success"
+          type="portfolio-success"
         />
       )}
     </>

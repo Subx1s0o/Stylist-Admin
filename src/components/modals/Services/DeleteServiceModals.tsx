@@ -1,6 +1,6 @@
 import NotificationModal from "@/components/modals/NotificationModal";
 
-import { DeleteServiceModalsProps } from "@/types/service-modals-props.type";
+import { DeleteServiceModalsProps } from "@/types/delete-modals-props.type";
 
 import dynamic from "next/dynamic";
 const QuestionDeleteModal = dynamic(

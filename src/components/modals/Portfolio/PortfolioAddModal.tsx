@@ -3,7 +3,7 @@ import { ModalProps } from "@/types/modal-props.type";
 
 import Modal from "../Modal";
 
-export default function GalleryAddModal({ close, isOpen }: ModalProps) {
+export default function PortfolioAddModal({ close, isOpen }: ModalProps) {
   return (
     <Modal.Overlay isOpen={isOpen}>
       <Modal>

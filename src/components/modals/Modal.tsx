@@ -26,7 +26,7 @@ function Overlay({ children, isOpen }: ModalProps): JSX.Element {
   });
 
   return (
-    <>
+    <div className="contents">
       {transitions(
         (styles, item) =>
           item && (
@@ -38,7 +38,7 @@ function Overlay({ children, isOpen }: ModalProps): JSX.Element {
             </animated.div>
           )
       )}
-    </>
+    </div>
   );
 }
 

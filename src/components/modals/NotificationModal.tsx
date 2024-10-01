@@ -26,7 +26,12 @@ export default function NotificationModal({
           <Modal.Description className="mb-10">{description}</Modal.Description>
         )}
         <div className="flex gap-5 justify-center">
-          <Button variant="black" onClick={close} className="px-10">
+          <Button
+            variant="black"
+            onClick={close}
+            className="px-10"
+            type="button"
+          >
             Oк
           </Button>
         </div>

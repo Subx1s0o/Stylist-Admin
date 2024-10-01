@@ -1,14 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+import useSubmitForm from "@/components/hooks/useSubmitForm";
+import AddPortfolioModals from "@/components/modals/Portfolio/AddPortfolioModals";
 import Button from "@/components/ui/Button";
 import {
   PortfolioFormSchema,
   PortfolioFormValues,
 } from "@/types/portfolio.schema";
-import { addImageToPortfolio } from "@/utils/portfolio";
-import { toBase64 } from "@/utils/toBase64";
+import { AddImageToPortfolio } from "@/types/portfolio.types";
+import { prepareImageToPortfolio } from "@/utils/portfolio";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import FileInput from "../FileInput";
 
@@ -21,23 +22,20 @@ export default function PortfolioForm({ close }: PortfolioFormProps) {
     resolver: zodResolver(PortfolioFormSchema),
   });
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const { error, loading, setError, setSuccess, submitForm, success } =
+    useSubmitForm<AddImageToPortfolio, PortfolioFormValues>({
+      mode: "PORTFOLIO",
+      prepareData: (data) => prepareImageToPortfolio(data),
+    });
 
-  const submitForm = async (data: PortfolioFormValues) => {
-    setLoading(true);
+  const closeError = () => {
     setError(false);
+    close && close();
+  };
+
+  const closeSuccess = () => {
     setSuccess(false);
-    const imageData = { image: (await toBase64(data.image[0])) as string };
-    try {
-      await addImageToPortfolio(imageData);
-      setSuccess(true);
-    } catch (error) {
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
+    close && close();
   };
 
   return (
@@ -48,7 +46,7 @@ export default function PortfolioForm({ close }: PortfolioFormProps) {
         attention="Доступні формати avif, webp, png, jpg, jpeg"
       />
       <div className="flex gap-5 justify-center">
-        <Button variant="outline" onClick={close}>
+        <Button variant="outline" type="button" onClick={close}>
           Скасувати
         </Button>
         <Button variant="black" type="submit">
@@ -56,9 +54,13 @@ export default function PortfolioForm({ close }: PortfolioFormProps) {
         </Button>
       </div>
 
-      {loading}
-      {success && "успіх"}
-      {error && "помилка"}
+      <AddPortfolioModals
+        error={error}
+        loading={loading}
+        closeError={closeError}
+        closeSuccess={closeSuccess}
+        success={success}
+      />
     </form>
   );
 }

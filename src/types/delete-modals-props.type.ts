@@ -1,11 +1,3 @@
-export interface ServiceModalsProps {
-  loading: boolean;
-  error: boolean;
-  setError: (bool: boolean) => void;
-  success: boolean;
-  setSuccess: (bool: boolean) => void;
-}
-
 export interface DeleteServiceModalsProps {
   isOpen: boolean;
   selectedServiceId: string;

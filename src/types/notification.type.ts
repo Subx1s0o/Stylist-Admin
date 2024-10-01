@@ -1,7 +1,16 @@
 export type NotificationType =
+  // Adding Services
   | "add-success"
-  | "update-success"
-  | "delete-success"
   | "add-error"
+  // Update Services
+  | "update-success"
   | "update-error"
-  | "delete-error";
+  // Deleting Services
+  | "delete-error"
+  | "delete-success"
+  // Adding Portfolio
+  | "portfolio-error"
+  | "portfolio-success"
+  // Deleting Portfolio
+  | "portfolio-delete-success"
+  | "portfolio-delete-error";

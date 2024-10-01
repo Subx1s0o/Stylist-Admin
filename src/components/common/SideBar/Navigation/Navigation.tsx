@@ -8,6 +8,7 @@ export default function Navigation() {
         iconId="icon-style"
         label="Стиль"
       />
+
       <NavLink
         href="/dashboard/services/makeup"
         iconId="icon-makeup"
@@ -15,7 +16,7 @@ export default function Navigation() {
       />
 
       <NavLink
-        href="/dashboard/gallery"
+        href="/dashboard/portfolio"
         iconId="icon-gallery"
         label="Галерея"
       />

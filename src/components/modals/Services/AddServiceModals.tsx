@@ -1,4 +1,4 @@
-import { ServiceModalsProps } from "@/types/service-modals-props.type";
+import { SubmitModalsProps } from "@/types/submit-modals-props.type";
 import dynamic from "next/dynamic";
 
 const LoadingModal = dynamic(() => import("@/components/modals/LoadingModal"), {
@@ -17,7 +17,7 @@ export default function AddServiceModals({
   setError,
   success,
   setSuccess,
-}: ServiceModalsProps) {
+}: SubmitModalsProps) {
   return (
     <>
       {loading && <LoadingModal isOpen={loading} />}
